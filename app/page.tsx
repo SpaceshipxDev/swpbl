@@ -25,45 +25,81 @@ const App: React.FC = () => {
   // Tab configurations
   const tabs: TabConfig[] = [
     {
-      id: 'full',
-      name: 'Full View',
-      columns: ['item', 'name', 'brand', 'cost', 'price', 'quantity'],
+      id: 'generic',
+      name: '通用字段',
+      columns: ['partImage', 'partName', 'processRequirement', 'material', 'quantity'],
       columnLabels: {
-        item: 'Item',
-        name: 'Name',
-        brand: 'Brand',
-        cost: 'Cost',
-        price: 'Price',
-        quantity: 'Quantity'
+        partImage: '零件图片',
+        partName: '零件名称',
+        processRequirement: '工艺要求',
+        material: '材料',
+        quantity: '数量'
       }
     },
     {
-      id: 'summary',
-      name: 'Summary View',
-      columns: ['name', 'price'],
+      id: 'quote',
+      name: '报价单',
+      columns: [
+        'partImage',
+        'partName',
+        'processRequirement',
+        'material',
+        'quantity',
+        'unitPrice',
+        'totalPrice',
+        'note'
+      ],
       columnLabels: {
-        name: 'Name',
-        price: 'Price'
+        partImage: '零件图片',
+        partName: '零件名称',
+        processRequirement: '工艺要求',
+        material: '材料',
+        quantity: '数量',
+        unitPrice: '单价',
+        totalPrice: '总价',
+        note: '备注'
       }
     },
     {
-      id: 'inventory',
-      name: 'Inventory',
-      columns: ['item', 'brand', 'quantity'],
+      id: 'production',
+      name: '生产单',
+      columns: [
+        'partImage',
+        'partName',
+        'processingMethod',
+        'processRequirement',
+        'material',
+        'quantity',
+        'note'
+      ],
       columnLabels: {
-        item: 'Item',
-        brand: 'Brand',
-        quantity: 'Quantity'
+        partImage: '零件图片',
+        partName: '零件名称',
+        processingMethod: '加工方式',
+        processRequirement: '工艺要求',
+        material: '材料',
+        quantity: '数量',
+        note: '备注'
       }
     },
     {
-      id: 'pricing',
-      name: 'Pricing',
-      columns: ['name', 'cost', 'price'],
+      id: 'shipment',
+      name: '出货单',
+      columns: [
+        'partImage',
+        'partNumber',
+        'partName',
+        'processRequirement',
+        'material',
+        'quantity'
+      ],
       columnLabels: {
-        name: 'Name',
-        cost: 'Cost',
-        price: 'Price'
+        partImage: '零件图片',
+        partNumber: '零件编号',
+        partName: '零件名称',
+        processRequirement: '工艺要求',
+        material: '材料',
+        quantity: '数量'
       }
     }
   ];
@@ -73,12 +109,16 @@ const App: React.FC = () => {
     // Initialize with 100 empty rows
     return Array.from({ length: 100 }, (_, i) => ({
       id: `row-${i}`,
-      item: { type: 'text', value: '' } as CellContent,
-      name: { type: 'text', value: '' } as CellContent,
-      brand: { type: 'text', value: '' } as CellContent,
-      cost: { type: 'text', value: '' } as CellContent,
-      price: { type: 'text', value: '' } as CellContent,
-      quantity: { type: 'text', value: '' } as CellContent
+      partImage: { type: 'text', value: '' } as CellContent,
+      partNumber: { type: 'text', value: '' } as CellContent,
+      partName: { type: 'text', value: '' } as CellContent,
+      processingMethod: { type: 'text', value: '' } as CellContent,
+      processRequirement: { type: 'text', value: '' } as CellContent,
+      material: { type: 'text', value: '' } as CellContent,
+      quantity: { type: 'text', value: '' } as CellContent,
+      unitPrice: { type: 'text', value: '' } as CellContent,
+      totalPrice: { type: 'text', value: '' } as CellContent,
+      note: { type: 'text', value: '' } as CellContent
     }));
   });
 
@@ -408,7 +448,7 @@ const App: React.FC = () => {
                 <line x1="15" y1="3" x2="15" y2="21" stroke="#0F9D58" strokeWidth="2"/>
               </svg>
             </div>
-            <div className="text-base font-medium text-gray-800">Swap Tables</div>
+            <div className="text-base font-medium text-gray-800">零件管理表</div>
           </div>
           <div className="ml-auto flex items-center space-x-2">
             <span className="text-xs text-gray-500">Auto-saved</span>
