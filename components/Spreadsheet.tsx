@@ -77,7 +77,7 @@ export default function Spreadsheet() {
         </div>
       </div>
       <div className="overflow-auto border border-gray-300 rounded">
-        <table className="w-full table-fixed border-collapse text-sm">
+        <table className="min-w-full border-collapse text-sm">
           <thead>
             <tr>
               {visibleColumns.map((col) => (
@@ -97,9 +97,9 @@ export default function Spreadsheet() {
                 className="odd:bg-white even:bg-gray-50 dark:odd:bg-neutral-900 dark:even:bg-neutral-800"
               >
                 {visibleColumns.map((col) => (
-                  <td key={col.id} className="border-t border-gray-200 text-left">
+                  <td key={col.id} className="border-t border-gray-200">
                     <input
-                      className="w-full px-2 py-1 text-left focus:outline-none bg-transparent"
+                      className="w-full px-2 py-1 focus:outline-none bg-transparent"
                       value={row[col.id] || ''}
                       onChange={(e) => handleCellChange(rowIndex, col.id, e.target.value)}
                     />
